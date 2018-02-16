@@ -1,9 +1,13 @@
 import socket
+
+from pip import req
 from urlunshort import is_shortened
 from urllib2 import urlopen
 import whois
 import datetime
 import urllib,re
+import urllib2
+import requests as req
 
 positive='1'
 negative='-1'
@@ -210,6 +214,30 @@ def Submit(data):
                 return negative
     return positive
 
+def Request(name):
+
+    try:
+        resp = req.get("http://{}".format(name), allow_redirects=False)
+
+        if resp.status_code == 301 :
+            return negative
+        else:
+            return positive
+    except:
+        return negative
+
+def statisticalReport():
+    return neutral
+
+def googleIndex():
+    return neutral
+
+def ssl():
+    return neutral
+
+def linktoPage():
+    return neutral
+
 def datasetGenerator(line):
     temp=[]
     temp.append(getIpaddress(line))
@@ -222,25 +250,28 @@ def datasetGenerator(line):
     temp.append(port(line))
     temp.append(https(line))
     temp.append(CodeLength(line))
-    whoisTemp=whoisSection(line)
-    temp.append(Domainregisterationlength(whoisTemp))
-    temp.append(ageOfDomain(whoisTemp))
-    temp.append(dnsRecord(whoisTemp))
+    #whoisTemp=whoisSection(line)
+    #temp.append(Domainregisterationlength(whoisTemp))
+    #temp.append(ageOfDomain(whoisTemp))
+    #temp.append(dnsRecord(whoisTemp))
     temp.append(pageRank(line))
     htmlData=readhtml(line)
     temp.append(scrapping(htmlData,line.split('.')[0]))
     temp.append(linkInTags(htmlData,line.split('.')[0]))
     temp.append(Submit(htmlData))
+    temp.append(Request(line))
+    temp.append(ssl())
+    temp.append(linktoPage())
+    temp.append(googleIndex())
+    temp.append(statisticalReport())
+
     return ','.join(temp)
 
 if __name__ == '__main__':
-    with open('top-1m.csv','r') as f:
-        temp=[]
-        for line in f.readlines():
-            line=line.split(',')[1]
-            line=line.split('\n')[0]
-            temp=datasetGenerator(line)
-            break
+    line="abdhcb.com"
+    line=line.split('\n')[0]
+    temp=datasetGenerator(line)
+
 
     print temp
-print (temp.count('1'))
+    print (temp.count('1'))
