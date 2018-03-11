@@ -6,7 +6,7 @@
 
 ###Pre Requisities
 
-#####1.pip install -r shortrequirement.txt #####2.Python 2.7.x
+#####1.pip install -r install_requirements.txt #####2.Python 2.7.x
 
 ###How to Run the program python read.py ###Output of program domain name : Features (In form of 1 , 0 -,1)
 

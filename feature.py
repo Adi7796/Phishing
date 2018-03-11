@@ -9,6 +9,8 @@ import urllib,re
 import urllib2
 import requests as req
 
+
+
 positive='1'
 negative='-1'
 neutral='0'
@@ -268,10 +270,10 @@ def datasetGenerator(line):
     return ','.join(temp)
 
 if __name__ == '__main__':
-    line="abdhcb.com"
+    line="rediffmail.com"
     line=line.split('\n')[0]
     temp=datasetGenerator(line)
 
 
     print temp
-    print (temp.count('1'))
+    print (temp.count('-1'))
