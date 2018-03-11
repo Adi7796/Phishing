@@ -124,7 +124,7 @@ while test !=1000:
     test+=1
 print count,len(data)-1
 accuracy=0
-accuracy=(count/1000)*100
-print(accuracy)
+accuracy=float(count/1000.0)*100
+print('accuracy='+ accuracy)
 listd=np.array(listd)
 
