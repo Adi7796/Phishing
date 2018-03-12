@@ -2,3 +2,5 @@ urlunshort
 whois
 regex
 requests
+scipy
+numpy
