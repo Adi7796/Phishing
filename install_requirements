@@ -3,4 +3,7 @@ whois
 regex
 requests
 scipy
+<<<<<<< HEAD
 numpy
+=======
+>>>>>>> f51435285c350409e0eea4b299561362bc2b937c
