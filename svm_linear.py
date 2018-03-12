@@ -10,7 +10,7 @@ Y=[]
 for x in puredata:
     Y.append(x[30])
 
-clf=svm.SVC()
+clf=svm.LinearSVC()
 clf.fit(X,Y)
 
 pred=clf.predict(X)
