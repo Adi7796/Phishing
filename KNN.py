@@ -2,7 +2,7 @@ import numpy as np
 from sklearn import neighbors
 from sklearn.metrics import confusion_matrix
 
-puredata=np.loadtxt('feature2.txt',delimiter=',')
+puredata=np.loadtxt('new_dataset.txt',delimiter=',')
 X=puredata[:,:30]
 Y=[]
 

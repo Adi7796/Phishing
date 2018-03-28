@@ -92,7 +92,7 @@ def CodeLength(name):
         return negative
     else:
         return positive
-    
+
 
 def pageRank(name):
 
@@ -222,7 +222,7 @@ if __name__ == '__main__':
             feature = feature +',1\n'
         dataset.append(feature)
 
-    f=open('feature2.txt','w')
+    f=open('new_dataset.txt','w')
     for x in dataset:
         f.write(x)
 

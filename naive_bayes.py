@@ -1,7 +1,7 @@
 import math
 
 
-def calculateProbabilty(tupple, mean ,std):
+def calculateProb(tupple, mean ,std):
     temp=[]
     tupple=tupple.split(',')[:-1]
     mean=mean.split(',')
@@ -24,7 +24,7 @@ def squareRoot(dataset):
     return ','.join(temp)
 
 
-def stdev(dataset, mean):
+def standarddeviation(dataset, mean):
     test = initiate(len(dataset[0].split(',')))
     # print mean
     # print len(mean)
@@ -90,7 +90,7 @@ def splitDataset(dataset,ratio):
             test.append(dataset[i])
     return temp,test
 
-def phish(dataset):
+def phishing(dataset):
     phish=[]
     good=[]
     for x in dataset:
@@ -109,14 +109,14 @@ if __name__ == '__main__':
     dataset,test=splitDataset(dataset,0.67)
     #print len(dataset)
     #print len(test)
-    phis,good = phish(dataset)
+    phis,good = phishing(dataset)
     phishmean =findmean(phis)
     goodmean=findmean(good)
     print phishmean
     print goodmean
 
-    phishstd=stdev(phis,phishmean)
-    goodstd=stdev(good,goodmean)
+    phishstd=standarddeviation(phis,phishmean)
+    goodstd=standarddeviation(good,goodmean)
     print phishstd
     print goodstd
 
@@ -128,9 +128,9 @@ if __name__ == '__main__':
     correct=0
 
     for x in test:
-        phishprob=calculateProbabilty(x,phishmean,phishstd)
+        phishprob=calculateProb(x,phishmean,phishstd)
 
-        goodprob=calculateProbabilty(x,goodmean,goodstd)
+        goodprob=calculateProb(x,goodmean,goodstd)
 
         if phishprob<goodprob:
             if x.split(',')[-1].split('\n')[0]  == '-1':
