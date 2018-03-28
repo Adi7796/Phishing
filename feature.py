@@ -28,7 +28,7 @@ def getIpaddress(name):
         return negative
 
 
-def urlLenght(name):
+def geturlLenght(name):
     if len(name) > 54 :
         return negative
     elif len(name)>45 and len(name) <=54:
@@ -43,7 +43,7 @@ def shortenUrl(name):
     else:
         return positive
 
-def atTherate(name):
+def at(name):
     if '@' in name:
         return negative
     else:
@@ -55,7 +55,7 @@ def doubleSlash(name):
     else:
         return positive
 
-def dash(name):
+def hyphen(name):
     if '-' in name:
         return negative
     else:
@@ -71,7 +71,7 @@ def subDomain(name):
         return positive
 
 
-def port(name):
+def port_number(name):
     if len(name.split(':')) ==1 :
         return positive
     name=name.split(':')[1]
@@ -92,55 +92,7 @@ def CodeLength(name):
         return negative
     else:
         return positive
-
-
-
-
-
-def Domainregisterationlength(name):
-    try:
-        if name.updated_date == None:
-            return negative
-        else:
-            return positive
-    except:
-        return negative
-
-def ageOfDomain(name):
-    try:
-
-        date=name.expiration_date
-        if type(date) is list:
-
-            date=date[0]
-
-        year=date.year
-        month=date.month
-        if year==currYear and month-currMonth >6 :
-            return neutral
-        elif year!=currYear :
-            return positive
-        elif year == currYear and month - currMonth<6:
-            return negative
-        else:
-            return negative
-    except:
-        return negative
-
-def dnsRecord(name):
-    try:
-        if name.dnssec == None :
-            return negative
-        else:
-            return positive
-    except:
-        return negative
-
-
-def whoisSection(name):
-    return whois.whois(name)
-
-
+    
 
 def pageRank(name):
 
@@ -206,7 +158,7 @@ def readhtml(name):
 
     return dataset
 
-def Submit(data):
+def Submitbutton(data):
     for line in data:
         if '<form ' in line and 'action' in line:
             test = line.split('action="')[1]
@@ -229,44 +181,27 @@ def Request(name):
     except:
         return negative
 
-def statisticalReport():
-    return neutral
 
-def googleIndex():
-    return neutral
-
-def ssl():
-    return neutral
-
-def linktoPage():
-    return neutral
 
 def datasetGenerator(line):
     temp=[]
     temp.append(getIpaddress(line))
-    temp.append(urlLenght(line))
+    temp.append(geturlLenght(line))
     temp.append(shortenUrl(line))
-    temp.append(atTherate(line))
+    temp.append(at(line))
     temp.append(doubleSlash(line))
-    temp.append(dash(line))
+    temp.append(hyphen(line))
     temp.append(subDomain(line))
-    temp.append(port(line))
+    temp.append(port_number(line))
     temp.append(https(line))
     temp.append(CodeLength(line))
-    #whoisTemp=whoisSection(line)
-    #temp.append(Domainregisterationlength(whoisTemp))
-    #temp.append(ageOfDomain(whoisTemp))
-    #temp.append(dnsRecord(whoisTemp))
     temp.append(pageRank(line))
     htmlData=readhtml(line)
     temp.append(scrapping(htmlData,line.split('.')[0]))
     temp.append(linkInTags(htmlData,line.split('.')[0]))
-    temp.append(Submit(htmlData))
+    temp.append(Submitbutton(htmlData))
     temp.append(Request(line))
-    #temp.append(ssl())
-    #temp.append(linktoPage())
-    #temp.append(googleIndex())
-    #temp.append(statisticalReport())
+
 
     return ','.join(temp)
 
