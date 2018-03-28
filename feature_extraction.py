@@ -1,4 +1,4 @@
-f=open('websites.csv','r')
+f=open('phishing_websites.csv','r')
 temp=f.readlines()[1002:]
 
 dataset=[]
@@ -11,7 +11,7 @@ for x in temp:
 limit=len(dataset)
 print (limit)
 
-f=open('top-1m.csv','r')
+f=open('non_phishing.csv','r')
 temp=f.readlines()[1002:]
 for x in temp:
     if len(dataset)/2 >= limit:
