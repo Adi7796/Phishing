@@ -8,6 +8,7 @@ import datetime
 import urllib,re
 import urllib2
 import requests as req
+import progressbar
 
 
 
@@ -262,18 +263,32 @@ def datasetGenerator(line):
     temp.append(linkInTags(htmlData,line.split('.')[0]))
     temp.append(Submit(htmlData))
     temp.append(Request(line))
-    temp.append(ssl())
-    temp.append(linktoPage())
-    temp.append(googleIndex())
-    temp.append(statisticalReport())
+    #temp.append(ssl())
+    #temp.append(linktoPage())
+    #temp.append(googleIndex())
+    #temp.append(statisticalReport())
 
     return ','.join(temp)
 
 if __name__ == '__main__':
-    line="rediffmail.com"
-    line=line.split('\n')[0]
-    temp=datasetGenerator(line)
+    dataset=[]
+    f=open('data_set.txt','r')
+    test=f.readlines()
+    limit=len(test)
+    bar = progressbar.ProgressBar()
+    for i in bar(range(len(test))):
+        try:
+            feature=datasetGenerator(test[i].split('\n')[0])
+        except:
+            continue
+        if i <= limit/2 :
+            feature= feature+',-1\n'
+        else:
+            feature = feature +',1\n'
+        dataset.append(feature)
+
+    f=open('feature2.txt','w')
+    for x in dataset:
+        f.write(x)
 
 
-    print temp
-    print (temp.count('-1'))

@@ -13,7 +13,7 @@ for x in puredata:
 clf=svm.LinearSVC()
 clf.fit(X,Y)
 
-pred=clf.predict(X)
+pred = clf.predict(X)
 cm=confusion_matrix(Y,pred)
 
 #print cm

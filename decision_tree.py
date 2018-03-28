@@ -34,10 +34,10 @@ DecisionTreeClassifier(class_weight=None, criterion='entropy', max_depth=3,
             presort=False, random_state=100, splitter='best')
 
 y_pred = clf_gini.predict(X_test)
-y_pred
+#y_pred
 
 y_pred_en = clf_entropy.predict(X_test)
-y_pred_en
+#y_pred_en
 
 print "Accuracy is ", accuracy_score(y_test, y_pred) * 100
 print "Accuracy is ", accuracy_score(y_test,y_pred_en)*100
