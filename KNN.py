@@ -3,11 +3,11 @@ from sklearn import neighbors
 from sklearn.metrics import confusion_matrix
 
 puredata=np.loadtxt('new_dataset.txt',delimiter=',')
-X=puredata[:,:30]
+X=puredata[:,:15]
 Y=[]
 
 for x in puredata:
-    Y.append(x[30])
+    Y.append(x[15])
 
 clf=neighbors.KNeighborsClassifier()
 clf.fit(X,Y)

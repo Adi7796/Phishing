@@ -3,12 +3,12 @@ from sklearn.cross_validation import train_test_split
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.metrics import accuracy_score
 
-puredata=np.loadtxt('dataset2.txt',delimiter=',')
-X=puredata[:,:30]
+puredata=np.loadtxt('new_dataset.txt',delimiter=',')
+X=puredata[:,:15]
 Y=[]
 
 for x in puredata:
-    Y.append(x[30])
+    Y.append(x[15])
 
 print "Dataset Lenght:: ", len(puredata)
 print "Dataset Shape:: ", puredata.shape

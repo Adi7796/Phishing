@@ -2,7 +2,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-filename = 'dataset.txt'
+filename = 'dataset2.txt'
 
 puredata = np.loadtxt(filename, delimiter=',')
 X = puredata[:, 1:]
