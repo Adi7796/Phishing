@@ -57,7 +57,7 @@ monotonic==1.4
 mp3play==0.1.15
 mutagen==1.38
 MySQL-python==1.2.5
-nltk==3.2.5
+nltk==3.4.5
 ntplib==0.3.3
 numpy==1.12.1
 oauth2client==4.1.2
