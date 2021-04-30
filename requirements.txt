@@ -89,7 +89,7 @@ PyYAML==3.12
 requery==0.3.5.1
 requests==2.18.4
 requests-oauthlib==0.8.0
-rsa==3.4.2
+rsa==4.7
 search-google==1.2.1
 selenium==3.8.0
 semantic-version==2.5.0
